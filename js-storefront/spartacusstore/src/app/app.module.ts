@@ -19,6 +19,12 @@ import { SpartacusModule } from './spartacus/spartacus.module';
     EffectsModule.forRoot([]),
     SpartacusModule,
     BrowserTransferStateModule,
+    context: {
+urlParameters: ['basesite', 'language', 'currency'], 
+baseSite: ['electronics-spa', 'apparel-uk-spa'],
+language: ['en'],
+currency: ['USD', 'GBP'],
+},
   ],
   providers: [],
   bootstrap: [AppComponent]
