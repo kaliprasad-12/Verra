@@ -6,6 +6,8 @@ import { StoreModule } from "@ngrx/store";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpartacusModule } from './spartacus/spartacus.module';
+import { B2cStorefrontModule } from '@spartacus/storefront';
+import { translations, translationChunksConfig } from '@spartacus/assets';
 
 @NgModule({
   declarations: [
