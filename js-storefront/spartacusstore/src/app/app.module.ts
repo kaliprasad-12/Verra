@@ -19,12 +19,20 @@ import { SpartacusModule } from './spartacus/spartacus.module';
     EffectsModule.forRoot([]),
     SpartacusModule,
     BrowserTransferStateModule,
-    context: {
+     B2cStorefrontModule.withConfig({context: {
 urlParameters: ['basesite', 'language', 'currency'], 
 baseSite: ['electronics-spa', 'apparel-uk-spa'],
 language: ['en'],
 currency: ['USD', 'GBP'],
-},
+},  i18n: {
+        resources: translations,
+        chunks: translationChunksConfig,
+        fallbackLang: 'en'
+      },
+      features: {
+        level: '2.0'
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
