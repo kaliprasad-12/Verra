@@ -1,32 +1,29 @@
-import { HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
-import { EffectsModule } from "@ngrx/effects";
-import { StoreModule } from "@ngrx/store";
-import { AppRoutingModule } from './app-routing.module';
+ 
 import { AppComponent } from './app.component';
-import { SpartacusModule } from './spartacus/spartacus.module';
-import { B2cStorefrontModule } from '@spartacus/storefront';
 import { translations, translationChunksConfig } from '@spartacus/assets';
-
+import { B2cStorefrontModule } from '@spartacus/storefront';
+ 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    HttpClientModule,
-    AppRoutingModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
-    SpartacusModule,
-    BrowserTransferStateModule,
-     B2cStorefrontModule.withConfig({context: {
-urlParameters: ['basesite', 'language', 'currency'], 
-baseSite: ['electronics-spa', 'apparel-uk-spa'],
-language: ['en'],
-currency: ['USD', 'GBP'],
-},  i18n: {
+    BrowserModule,
+    B2cStorefrontModule.withConfig({
+      backend: {
+        occ: {
+          baseUrl: 'https://localhost:9002',
+          prefix: '/occ/v2/'
+        }
+      },
+      context: {
+        urlParameters: ['baseSite', 'language', 'currency'],
+        baseSite: ['electronics-spa','apparel-uk-spa','powertools-spa'],
+        currency: ['USD', 'GBP',]
+      },
+      i18n: {
         resources: translations,
         chunks: translationChunksConfig,
         fallbackLang: 'en'
@@ -34,7 +31,7 @@ currency: ['USD', 'GBP'],
       features: {
         level: '2.0'
       }
-    }),
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
